@@ -4,6 +4,28 @@ dotenv.config();
 import express from "express";
 import { connectToDatabase } from "./db/connect";
 
+// // import jwt
+// import jwt, { SignOptions } from "jsonwebtoken";
+
+// // ...
+
+// // Check if process.env.JWT_SECRET is defined
+// if (process.env.JWT_SECRET) {
+//   const token = jwt.sign(
+//     { userId: "SOME USER ID", email: "SOME USER EMAIL" },
+//     process.env.JWT_SECRET,
+//     {
+//       expiresIn: process.env.JWT_EXPIRES,
+//       issuer: process.env.JWT_ISSUER,
+//       jwtid: "SOME IDENTIFIER",
+//     } as SignOptions // Explicitly cast to SignOptions to handle undefined expiresIn, issuer, etc.
+//   );
+//   console.log(token);
+//   // Use the token as needed...
+// } else {
+//   console.error("JWT_SECRET is not defined in the environment variables.");
+// }
+
 // import jwt
 // import jwt from "jsonwebtoken";
 // const token = jwt.sign(
@@ -17,6 +39,11 @@ import { connectToDatabase } from "./db/connect";
 // );
 
 // console.log(token);
+
+
+
+
+
 
 const app = express();
 

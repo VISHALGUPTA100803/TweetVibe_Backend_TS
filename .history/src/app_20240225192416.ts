@@ -4,6 +4,8 @@ dotenv.config();
 import express from "express";
 import { connectToDatabase } from "./db/connect";
 
+
+
 // import jwt
 // import jwt from "jsonwebtoken";
 // const token = jwt.sign(
@@ -17,6 +19,11 @@ import { connectToDatabase } from "./db/connect";
 // );
 
 // console.log(token);
+
+
+
+
+
 
 const app = express();
 

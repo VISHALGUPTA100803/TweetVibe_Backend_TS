@@ -5,18 +5,18 @@ import express from "express";
 import { connectToDatabase } from "./db/connect";
 
 // import jwt
-// import jwt from "jsonwebtoken";
-// const token = jwt.sign(
-//   { userId: "SOME USER ID", email: "SOME USER EMAIL" },
-//   process.env.JWT_SECRET,
-//   {
-//     expiresIn: process.env.JWT_EXPIRES,
-//     issuer: process.env.JWT_ISSUER,
-//     jwtid: "SOME IDENTIFIER",
-//   }
-// );
+import jwt from "jsonwebtoken";
+const token = jwt.sign(
+  { userId: "SOME USER ID", email: "SOME USER EMAIL" },
+  process.env.JWT_SECRET,
+  {
+    expiresIn: process.env.JWT_EXPIRES,
+    issuer: process.env.JWT_ISSUER,
+    jwtid: "SOME IDENTIFIER",
+  }
+);
 
-// console.log(token);
+console.log(token);
 
 const app = express();
 
