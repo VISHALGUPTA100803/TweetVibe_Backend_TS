@@ -4,15 +4,15 @@ import Blacklist from "../db/models/blacklist";
 import { UnauthorizedError } from "../errors";
 
 import AuthenticatedUser from "./models/authenticated-user";
-// Unused parameters in TypeScript can be prefixed with an 
-//underscore to indicate that they are unused
+// Unused parameters in TypeScript can be prefixed with an underscore to indicate that they are unused
 export async function expressAuthentication(
     req: Request,
     securityName: string,
     _scopes?: string[]
   ): Promise<AuthenticatedUser> {
     // grab the token out of the HTTP header
-   const authHeader = req.headers.authorization;
+  
+    const authHeader = req.headers.authorization;
     if (!authHeader) {
       throw new UnauthorizedError();
     }

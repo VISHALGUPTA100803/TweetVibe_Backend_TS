@@ -50,19 +50,6 @@ export class AuthController extends Controller {
   }
 
   
-  @Post("refresh")
-  @Security("jwt_without_verification")
-  @OperationId("refreshUser")
-  public async refresh(
-    @Request() request: ExpressRequest,
-    @Body() requestBody: RefreshParams
-  ): Promise<UserAndCredentials> {
-    this.setStatus(StatusCodes.OK);
-    const user = request.user as AuthenticatedUser;
-    return new AuthService().refresh(requestBody, user);
-  }
-
-  
   // TODO: remove this dummy endpoint later when
   // we have proper endpoints that use our
   // authentication mechanism

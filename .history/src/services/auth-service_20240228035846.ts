@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 import { v4 as uuidv4 } from "uuid";
 import User from "../db/models/user";
 
-import {RefreshParams, LoginParams, UserAndCredentials, UserCreationParams } from "./models/auth-models";
+import {R LoginParams, UserAndCredentials, UserCreationParams } from "./models/auth-models";
 
 import { BadRequestError, UnauthorizedError } from "../errors";
 

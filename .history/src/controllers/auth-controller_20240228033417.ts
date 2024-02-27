@@ -2,18 +2,13 @@ import { StatusCodes } from "http-status-codes";
 
 import { Body, Controller, Delete, OperationId, Post, Request, Route, Security, Tags } from "tsoa";
 
-import { Request as ExpressRequest } from "express";
-
 import {
   UserAndCredentials,
   UserCreationParams,
-  LoginParams,
-  RefreshParams
+  LoginParams
 } from "../services/models/auth-models";
 
 import AuthService from "../services/auth-service";
-
-import AuthenticatedUser from "../middleware/models/authenticated-user";
 
 @Route("/api/v1/auth") // We are enforcing our AuthController class to have the route path of “/api/v1/auth”
 @Tags("Auth") // we can categorize various controller endpoints.
@@ -36,30 +31,6 @@ export class AuthController extends Controller {
   ): Promise<UserAndCredentials> {
     this.setStatus(StatusCodes.OK);
     return new AuthService().login(requestBody);
-  }
-
-
-  
-  @Delete()
-  @Security("jwt")
-  @OperationId("logoutUser")
-  public async logout(@Request() request: ExpressRequest): Promise<void> {
-    this.setStatus(StatusCodes.NO_CONTENT);
-    const user = request.user as { jti: string };
-    await new AuthService().logout(user.jti);
-  }
-
-  
-  @Post("refresh")
-  @Security("jwt_without_verification")
-  @OperationId("refreshUser")
-  public async refresh(
-    @Request() request: ExpressRequest,
-    @Body() requestBody: RefreshParams
-  ): Promise<UserAndCredentials> {
-    this.setStatus(StatusCodes.OK);
-    const user = request.user as AuthenticatedUser;
-    return new AuthService().refresh(requestBody, user);
   }
 
   

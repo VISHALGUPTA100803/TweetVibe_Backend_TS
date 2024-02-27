@@ -12,7 +12,8 @@ export async function expressAuthentication(
     _scopes?: string[]
   ): Promise<AuthenticatedUser> {
     // grab the token out of the HTTP header
-   const authHeader = req.headers.authorization;
+  
+    const authHeader = req.headers.authorization;
     if (!authHeader) {
       throw new UnauthorizedError();
     }
