@@ -21,9 +21,6 @@ import { connectToDatabase } from "./db/connect";
 const app = express();
 
 
-app.use(urlencoded({ extended: true }));
-app.use(json());
-
 // swagger UI
 import * as swaggerUI from "swagger-ui-express";
 import * as swaggerJson from "./tsoa/tsoa.json";

@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 dotenv.config();
 
-import express, { json, urlencoded } from "express";
+import express from "express";
 import { connectToDatabase } from "./db/connect";
 
 // import jwt
@@ -21,9 +21,6 @@ import { connectToDatabase } from "./db/connect";
 const app = express();
 
 
-app.use(urlencoded({ extended: true }));
-app.use(json());
-
 // swagger UI
 import * as swaggerUI from "swagger-ui-express";
 import * as swaggerJson from "./tsoa/tsoa.json";
@@ -35,20 +32,6 @@ app.use(
   swaggerUI.serve,
   swaggerUI.setup(swaggerJson)
 );
-
-// serve swagger JSON
-
-app.get("/swagger.json", (_, res) => {
-  res.setHeader("Content-Type", "application/json");
-  res.sendFile(__dirname + "/tsoa/tsoa.json");
-});
-
-// tsoa routes
-
-import { RegisterRoutes } from "./routes/routes";
-RegisterRoutes(app);
-
-// port and start functions go here
 
 const port = process.env.PORT || 3000;
 
